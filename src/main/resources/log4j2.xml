@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+<!--            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %n"/>-->
+<!--            <PatternLayout pattern="[%t] %-5level %n"/>-->
+        </Console>
+        <File name="MyFile" fileName="logs/app.log">
+            <PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
+<!--            <PatternLayout pattern="%d %p %c{1.} [%t] %n" />-->
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.search" level="TRACE" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.hibernate.type.descriptor.sql" level="WARN"/>
+        <!-- Root Logger -->
+        <Root level="TRACE">
+            <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+
+
+</Configuration>
